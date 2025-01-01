@@ -15,8 +15,8 @@ services:
     environment:
       REDASH_REDIS_URL: "redis://redis:6379/0"
       REDASH_LOG_LEVEL: "INFO"
-      REDASH_COOKIE_SECRET: "w_QMF8HeSRO1WRYsiFikAs23V6DyFqEC1evNIrieP_Y"
-      REDASH_SECRET_KEY: "VT6W5jcfj3rWn7i826rzQ2laLtR_O4qKOsTxceIHXC0"
+      REDASH_COOKIE_SECRET: "your-generated-secret-for-redash-secret-key"
+      REDASH_SECRET_KEY: "your-generated-secret-for-redash-cookie-secret"
     depends_on:
       - redis
     ports:
