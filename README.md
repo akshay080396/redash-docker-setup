@@ -1,4 +1,3 @@
-# redash-docker-setup
 # Redash Setup with Docker Compose
 
 This repository provides a detailed guide and configuration for deploying Redash using Docker Compose. Follow the instructions below to set up Redash, initialize the database, and resolve common errors such as the `organization table not found` issue.
@@ -23,7 +22,7 @@ This repository provides a detailed guide and configuration for deploying Redash
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/redash-docker-setup.git
+git clone https://github.com/akshay080396/redash-docker-setup.git
 cd redash-docker-setup
 ```
 
