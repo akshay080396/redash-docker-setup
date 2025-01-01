@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:6.2
+    container_name: redash_redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+
+  redash_server:
+    image: redash/redash:latest
+    container_name: redash_server
+    environment:
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_COOKIE_SECRET: "w_QMF8HeSRO1WRYsiFikAs23V6DyFqEC1evNIrieP_Y"
+      REDASH_SECRET_KEY: "VT6W5jcfj3rWn7i826rzQ2laLtR_O4qKOsTxceIHXC0"
+    depends_on:
+      - redis
+    ports:
+      - "5001:5000"
+
+  redash_worker:
+    image: redash/redash:latest
+    container_name: redash_worker
+    environment:
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      QUEUES: "celery"
+      WORKERS_COUNT: 4
+    depends_on:
+      - redis
+
+volumes:
+  redis_data:
