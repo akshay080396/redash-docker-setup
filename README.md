@@ -28,15 +28,19 @@ cd redash-docker-setup
 
 ### Step 2: Generate Secure Secrets
 For security reasons, Redash requires unique secrets for REDASH_SECRET_KEY and REDASH_COOKIE_SECRET. You can generate these using Python's secrets module:
+```bash
 import secrets
-
-# Generate secure random secrets for REDASH
+```
+#### Generate secure random secrets for REDASH
+```bash
 redash_secret_key = secrets.token_urlsafe(32)  # For REDASH_SECRET_KEY
 redash_cookie_secret = secrets.token_urlsafe(32)  # For REDASH_COOKIE_SECRET
-
-# Print the generated secrets
+```
+#### Print the generated secrets
+```bash
 print("REDASH_SECRET_KEY:", redash_secret_key)
 print("REDASH_COOKIE_SECRET:", redash_cookie_secret)
+```
 
 ### Step 3: Launch the Services
 After generating the secrets, open the docker-compose.yml file and replace the placeholder values for REDASH_SECRET_KEY and REDASH_COOKIE_SECRET with the secrets you generated in Step 2:
