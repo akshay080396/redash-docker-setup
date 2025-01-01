@@ -1,0 +1,21 @@
+This error occurs when the Redash application starts but cannot find the organization table in the PostgreSQL database. 
+The root cause is typically that the database has not been initialized with the required schema and tables during the initial setup. 
+Redash relies on these tables to store metadata and operational data.
+
+-Start an interactive shell session inside the redash_server container:
+docker exec -it redash_server bash
+
+-Once inside, locate the manage script:
+find / -name manage
+
+-Inside the container, initialize the database by creating all required tables with:
+
+python manage.py database create_tables
+
+This command uses Redash's internal management scripts to set up the database schema, including the organization table.
+
+-Once done, exit the container with:
+ exit
+
+
+
